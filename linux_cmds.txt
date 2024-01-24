@@ -1,0 +1,2 @@
+su root //switch user to root
+screen /dev/ttyACM0 115200 //connect to UART
