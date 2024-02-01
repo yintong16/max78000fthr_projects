@@ -3,14 +3,15 @@ use std::io::{self, BufRead, BufReader, Write};
 
 fn main() -> io::Result<()> {
     // Open the input file for reading
-    let hex_file = File::open("C:/Users/Yintong Luo/Desktop/eCTF/max78000_fall23/New_Project_littlle_endian.hex")?;
+    let hex_file = File::open("C:/Users/Yintong Luo/Desktop/eCTF/max78000_fall23/flash_dump/data/ghidra_result.hex")?;
+
     let hex_reader = BufReader::new(hex_file);
 
-    let txt_file = File::open("C:/Users/Yintong Luo/Desktop/eCTF/max78000_fall23/hex_layout_txt2.txt")?;
+    let txt_file = File::open("C:/Users/Yintong Luo/Desktop/eCTF/max78000_fall23/flash_dump/data/hex_layout_txt2.txt")?;
     let txt_reader = BufReader::new(txt_file);
 
     // Open the output file for writing
-    let mut output_file = File::create("C:/Users/Yintong Luo/Desktop/eCTF/max78000_fall23/cmp_result2.txt")?;
+    let mut output_file = File::create("C:/Users/Yintong Luo/Desktop/eCTF/max78000_fall23/flash_dump/data/cmp_result2.txt")?;
     //let mut counter = 0;
 
     for (hex_line, txt_line) in hex_reader.lines().zip(txt_reader.lines()) {

@@ -3,11 +3,11 @@ use std::io::{self, BufRead, BufReader, BufWriter, Write};
 
 fn main() -> io::Result<()> {
     // Open the input file for reading
-    let input_file = File::open("C:/Users/Yintong Luo/Desktop/eCTF/max78000_fall23/hex_flash2.txt")?;
+    let input_file = File::open("C:/Users/Yintong Luo/Desktop/eCTF/max78000_fall23/flash_dump/data/hex_flash2.txt")?;
     let input_file = BufReader::new(input_file);
 
     // Open the output file for writing
-    let output_file = File::create("C:/Users/Yintong Luo/Desktop/eCTF/max78000_fall23/hex_layout_txt2.txt")?;
+    let output_file = File::create("C:/Users/Yintong Luo/Desktop/eCTF/max78000_fall23/flash_dump/data/hex_layout_txt2.txt")?;
     let mut output_file = BufWriter::new(output_file);
 
     let mut value_count = 0; // Counter to count the number of values written
