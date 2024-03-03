@@ -30,40 +30,20 @@
 * ownership rights.
 *******************************************************************************/
 
-/**
- * @file    main.c
- * @brief   Hello World!
- * @details This example uses the UART to print to a terminal and flashes an LED.
- */
-
 /***** Includes *****/
 #include <stdio.h>
 #include <string.h>
 #include <stdint.h>
-#include "mxc_device.h"
-#include "mxc_assert.h"
 #include "mxc_delay.h"
 #include "mxc_sys.h"
-#include "nvic_table.h"
 #include "flc.h"
-#include "icc.h"
-#include "uart.h"
 #include "led.h"
-#ifndef BOARD_AUD01_REVA
-#include "pb.h"
-#endif
 
-/*
-    ^ Points to last page in flash, which is guaranteed to be unused by this small example.
-    For larger applications it's recommended to reserve a dedicated flash region by creating
-    a modified linkerfile.
-*/
+#define TEST_ADDRESS (MXC_FLASH_MEM_BASE + MXC_FLASH_MEM_SIZE) - (1 * MXC_FLASH_PAGE_SIZE)
 /***** Globals *****/
-volatile uint32_t isr_cnt;
-volatile uint32_t isr_flags;
-uint32_t START_ADDRESS = MXC_FLASH_MEM_BASE;
+uint32_t START_ADDRESS = MXC_FLASH_MEM_BASE;//32buf x 64cnt x 4byte=8192=0x2000=MXC_FLASH_PAGE_SIZE
 /***** Functions *****/
-
+//0x10080000UL
 
 
 int main(void){
@@ -73,16 +53,17 @@ int main(void){
         LED_Off(LED1);
         MXC_Delay(MXC_DELAY_MSEC(500)); 
         //uint32_t buffer[32];
-        uint32_t one_4byte = 0;
+        unsigned char one_byte;
         int i;
-        for(i = 0; i < 32 && START_ADDRESS < (MXC_FLASH_MEM_BASE+MXC_FLASH_MEM_SIZE); ++i){
-            MXC_FLC_Read(START_ADDRESS, &one_4byte, 4);
-            //fprintf(file, "%d ", one_4byte);
-            printf("%d ", one_4byte);
-            START_ADDRESS += 4;
-        }
+        //for(i = 0; i < 128 && START_ADDRESS < (MXC_FLASH_MEM_BASE+MXC_FLASH_MEM_SIZE); ++i){
+        MXC_FLC_Read(START_ADDRESS, &one_byte, 1);
+        //fprintf(file, "%d ", one_4byte);
+        printf("%c", one_byte);
+        START_ADDRESS++;
+        //MXC_Delay(MXC_DELAY_MSEC(1000));
+        //}
         //fprintf(file, "\n");
-        printf("\n");
+        //printf("\n");
 
         // uint32_t one_4byte = 0;
         // MXC_FLC_Read(START_ADDRESS, &one_4byte, 4);

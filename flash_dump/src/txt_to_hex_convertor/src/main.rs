@@ -4,6 +4,7 @@ use std::io::{self, BufRead, BufReader, BufWriter, Write};
 fn calculate_checksum(hex_number: &str) -> u8 {
     // Convert the hex string to a vector of bytes
     let bytes: Vec<u8> = hex::decode(hex_number).unwrap_or_else(|e| {
+        println!("{}", hex_number);
         eprintln!("Error decoding hex string: {}", e);
         std::process::exit(1);
     });
@@ -17,11 +18,11 @@ fn calculate_checksum(hex_number: &str) -> u8 {
 
 fn main() -> io::Result<()> {
     // Open the input file for reading
-    let input_file = File::open("C:/Users/Yintong Luo/Desktop/eCTF/max78000_fall23/flash_dump/data/hex_layout_txt2.txt")?;
+    let input_file = File::open("C:/Users/Yintong Luo/Desktop/eCTF/max78000_fall23/flash_dump/data/formatted_flash.txt")?;
     let input_file = BufReader::new(input_file);
 
     // Open the output file for writing
-    let output_file = File::create("C:/Users/Yintong Luo/Desktop/eCTF/max78000_fall23/flash_dump/data/hex_layout_hex2.hex")?;
+    let output_file = File::create("C:/Users/Yintong Luo/Desktop/eCTF/max78000_fall23/flash_dump/data/flash512kb.hex")?;
     let mut output_file = BufWriter::new(output_file);
 
     let mut addr: u32 = 0;

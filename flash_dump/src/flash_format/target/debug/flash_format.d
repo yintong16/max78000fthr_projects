@@ -1,0 +1,1 @@
+C:\Users\Yintong\ Luo\Desktop\eCTF\max78000_fall23\flash_dump\src\flash_format\target\debug\flash_format.exe: C:\Users\Yintong\ Luo\Desktop\eCTF\max78000_fall23\flash_dump\src\flash_format\src\main.rs
