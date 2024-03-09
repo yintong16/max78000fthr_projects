@@ -16,11 +16,11 @@ fn hex_string_to_char(hex_str: &str) -> char {
 
 fn main() -> io::Result<()> {
     // Open the input file for reading
-    let input_file = File::open("C:/Users/Yintong Luo/Desktop/eCTF/max78000_fall23/flash_dump/data/flash512kb.txt")?;
+    let input_file = File::open("C:/Users/Yintong Luo/Desktop/eCTF/max78000_fall23/flash_dump/data/new_dump.txt")?;
     let input_file = BufReader::new(input_file);
 
     // Open the output file for writing
-    let output_file = File::create("C:/Users/Yintong Luo/Desktop/eCTF/max78000_fall23/flash_dump/data/formatted_flash.txt")?;
+    let output_file = File::create("C:/Users/Yintong Luo/Desktop/eCTF/max78000_fall23/flash_dump/data/new_dump_formatted.txt")?;
     let mut output_file = BufWriter::new(output_file);
 
     let mut value_count = 0; // Counter to count the number of values written

@@ -1,2 +1,7 @@
+/*Serial Connection*/
 su root //switch user to root
 screen /dev/ttyACM0 115200 //connect to UART
+
+/*Kill A Process Listening to A Specific Port*/
+netstat -ano | findstr :<PORT>
+taskkill /PID <PID> /F
