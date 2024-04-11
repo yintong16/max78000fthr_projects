@@ -1,0 +1,1 @@
+C:\Users\Yintong\ Luo\Desktop\eCTF\max78000_fall23\flash_dump\src\map_sections\target\debug\map_sections.exe: C:\Users\Yintong\ Luo\Desktop\eCTF\max78000_fall23\flash_dump\src\map_sections\src\main.rs
